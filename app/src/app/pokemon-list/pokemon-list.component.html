@@ -1,0 +1,8 @@
+<div>
+    <input [(ngModel)]="searchQuery" placeholder="Search Pokémon" (keyup.enter)="searchPokemons()">
+    <button (click)="searchPokemons()">Search</button>
+</div>
+<div *ngFor="let pokemon of pokemons">
+    <a [routerLink]="['/pokemon', pokemon.name]">{{ pokemon.name }}</a>
+</div>
+<button (click)="loadMore()">Load More</button>

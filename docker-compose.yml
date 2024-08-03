@@ -1,0 +1,14 @@
+services:
+  backend:
+    build: ./api
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+
+  frontend:
+    build: ./app
+    ports:
+      - '4200:80'
+    depends_on:
+      - backend
