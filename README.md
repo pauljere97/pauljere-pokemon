@@ -7,18 +7,24 @@ application built in [Angular](https://angular.dev).
 ## Prerequisites
 * [Node.js v20](https://nodejs.org/en)
 
-## Setup
+## Run in Docker environment
+1. Turn on your Docker daemon and ensure that it is running.
+2. Run the follwoing command in the root directory of the project
+
+```shell
+docker-compose up --build
+```
+
+## Run locally (development)
 1. Clone the repository.
 2. Install dependencies:
     ```shell
-    cd /path/to/cloned/pokedex/
     cd api/
     npm install
     cd ../app/
     npm install
     ```
 
-## Run locally (development)
 In two separate shells, start the API and app:
 ```shell
 cd api/
@@ -30,7 +36,6 @@ cd app/
 npm run start
 ```
 `URL: http://localhost:4200`
-Both the API and app will rebuild as changes are made to them.
 
 
 ## Run Nest JS test (server side) with Jest
