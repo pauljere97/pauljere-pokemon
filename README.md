@@ -29,3 +29,10 @@ cd app/
 npm run start
 ```
 Both the API and app will rebuild as changes are made to them.
+
+## Run Nest JS test (server side) with Jest
+In two separate shells, start the API and app:
+```shell
+cd api/
+npm run test
+```

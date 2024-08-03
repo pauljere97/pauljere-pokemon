@@ -17,6 +17,5 @@ export class PokemonController {
         } catch (err) {
             throw new NotFoundException()
         }
-
     }
 }
