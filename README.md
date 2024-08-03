@@ -18,20 +18,22 @@ application built in [Angular](https://angular.dev).
     npm install
     ```
 
-## Run
+## Run locally (development)
 In two separate shells, start the API and app:
 ```shell
 cd api/
 npm run start
 ```
+`URL: http://localhost:3000`
 ```shell
 cd app/
 npm run start
 ```
+`URL: http://localhost:4200`
 Both the API and app will rebuild as changes are made to them.
 
+
 ## Run Nest JS test (server side) with Jest
-In two separate shells, start the API and app:
 ```shell
 cd api/
 npm run test
