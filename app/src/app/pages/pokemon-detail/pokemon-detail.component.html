@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="top-bar">
+        <a [routerLink]="['/']">
+            <i class="material-icons">west</i>
+        </a>
+    </div>
+    <div class="pokemon-detail glass-card" *ngIf="pokemon">
+        <div class="pokemon-image-wrapper">
+            <img class="pokemon-image" [src]="pokemon.selectedImage" alt="{{ pokemon.name }}">
+            <div class="image-fill"></div>
+        </div>
+        <div class="switch-images">
+            <ng-container *ngFor="let image of pokemon.images">
+                <div class="image-toggle" [ngClass]="pokemon.selectedImage == image ? 'image-active' :''"
+                    (click)="pokemon.selectedImage = image"></div>
+            </ng-container>
+        </div>
+        <h2 class="pokemon-name">{{ pokemon.name }}</h2>
+        <p class="pokemon-hash">{{pokemon.hashID}}</p>
+        <div class="pokemon-stats">
+            <div class="pokemon-stat">
+                <p class="stat-title">Type</p>
+                <p class="stat-desc">{{pokemon.type}}</p>
+            </div>
+            <div class="pokemon-stat">
+                <p class="stat-title">Weight</p>
+                <p class="stat-desc">{{pokemon.weight}}kg</p>
+            </div>
+            <div class="pokemon-stat">
+                <p class="stat-title">Height</p>
+                <p class="stat-desc">{{pokemon.height}}ft</p>
+            </div>
+        </div>
+
+    </div>
+</div>

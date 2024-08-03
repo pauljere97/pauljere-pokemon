@@ -1,0 +1,5 @@
+<div class="pokemon-card glass-card flex-col-center" [routerLink]="['/pokemon', pokemon.name]">
+    <img class="pokemon-image" [src]="pokemon.image" [alt]="pokemon.name">
+    <p class="font-three">{{ pokemon.name }}</p>
+    <p class="pokemon-hash">#{{ pokemon.hashID }}</p>
+</div>

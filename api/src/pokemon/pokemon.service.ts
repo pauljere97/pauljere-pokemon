@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class PokemonService {
@@ -19,7 +19,10 @@ export class PokemonService {
     getPokemon(name: string): Observable<any> {
         const requestLink = `${this.apiUrl}/${name}`;
         return this.httpService.get(requestLink).pipe(
-            map((response: AxiosResponse) => response.data)
+            map((response: AxiosResponse) => response.data),
+            catchError(error => {
+                throw new NotFoundException()
+            })
         );
     }
 }

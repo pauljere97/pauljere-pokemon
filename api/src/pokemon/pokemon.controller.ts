@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Param } from '@nestjs/common';
+import { Controller, Get, Query, Param, NotFoundException } from '@nestjs/common';
 import { PokemonService } from './pokemon.service';
 
 @Controller('pokemon')
@@ -7,12 +7,16 @@ export class PokemonController {
 
     @Get()
     getPokemons(@Query('offset') offset = 0, @Query('limit') limit = 20) {
-        const pokemons = this.pokemonService.getPokemons(Number(offset), Number(limit));
         return this.pokemonService.getPokemons(Number(offset), Number(limit));;
     }
 
     @Get(':name')
     getPokemon(@Param('name') name: string) {
-        return this.pokemonService.getPokemon(name);
+        try {
+            return this.pokemonService.getPokemon(name);
+        } catch (err) {
+            throw new NotFoundException()
+        }
+
     }
 }

@@ -1,16 +1,20 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule } from "@angular/router";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterLink, RouterModule } from "@angular/router";
+import { FormsModule } from "@angular/forms";
 import { routes } from './pokedex-app.routes';
 import { PokedexAppComponent } from "./pokedex-app.component";
 import { PokemonService } from "./pokemon/pokemon.service";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
+import { PokemonDetailComponent } from "./pages/pokemon-detail/pokemon-detail.component";
+import { PokemonListComponent } from "./pages/pokemon-list/pokemon-list.component";
+import { PokemonCardComponent } from "./components/pokemon-card/pokemon-card.component";
 
 @NgModule({
   imports: [
+    RouterLink,
     FormsModule,
     CommonModule,
     BrowserModule,
@@ -23,6 +27,9 @@ import { HttpClientModule } from "@angular/common/http";
   ],
   declarations: [
     PokedexAppComponent,
+    PokemonDetailComponent,
+    PokemonListComponent,
+    PokemonCardComponent
   ],
   bootstrap: [PokedexAppComponent],
 })
