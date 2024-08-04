@@ -15,6 +15,7 @@ application built in [Angular](https://angular.dev).
 ```shell
 docker-compose up --build
 ```
+`URL: http://localhost:4200`
 
 ## Run locally (dev)
 1. Clone the repository.

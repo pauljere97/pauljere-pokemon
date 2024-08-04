@@ -3,7 +3,9 @@
         <a [routerLink]="['/pokemon', pokemon.name]">
             <img class="pokemon-image" [src]="pokemon.image" [alt]="pokemon.name">
         </a>
-        <p class="font-three">{{ pokemon.name }}</p>
+        <a [routerLink]="['/pokemon', pokemon.name]" class="pokemon-name">
+            <p class="font-three">{{ pokemon.name }}</p>
+        </a>
         <p class="pokemon-hash">#{{ pokemon.hashID }}</p>
     </div>
 </ng-container>
