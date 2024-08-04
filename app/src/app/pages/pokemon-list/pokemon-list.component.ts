@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../pokemon/pokemon.service';
 import { PokemonListModel } from '../../models/models';
+import { catchError, map, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 const pokemonImageLink = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
 
@@ -13,11 +15,14 @@ const pokemonImageLink = 'https://raw.githubusercontent.com/PokeAPI/sprites/mast
 
 export class PokemonListComponent implements OnInit {
   pokemons: PokemonListModel[] = [];
-  offset = 0;
-  limit = 20;
-  searchQuery = '';
+  offset: number = 0;
+  limit: number = 20;
+  searchQuery: string = '';
 
-  constructor(private pokemonService: PokemonService) { }
+  constructor(
+    private pokemonService: PokemonService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.loadPokemons();
@@ -50,14 +55,7 @@ export class PokemonListComponent implements OnInit {
 
   searchPokemons(): void {
     if (this.searchQuery) {
-      this.pokemons = []
-      this.pokemonService.getPokemon(this.searchQuery.toLowerCase()).subscribe((data: any) => {
-        this.pokemons = [this.getData(data)];
-      });
-    } else {
-      this.offset = 0;
-      this.pokemons = [];
-      this.loadPokemons();
+      this.router.navigateByUrl(`/pokemon/${this.searchQuery}`)
     }
   }
 }

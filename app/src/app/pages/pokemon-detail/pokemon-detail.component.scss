@@ -85,3 +85,15 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.not-found-icon {
+    color: var(--white);
+    font-size: 100px;
+}
+
+.not-found-link {
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    text-decoration: none;
+}

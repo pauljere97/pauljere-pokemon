@@ -8,12 +8,13 @@ import { FormsModule } from '@angular/forms';
 import { PokemonCardComponent } from '../../components/pokemon-card/pokemon-card.component'
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 describe('PokemonListComponent', () => {
   let component: PokemonListComponent;
   let fixture: ComponentFixture<PokemonListComponent>;
   let pokemonService: PokemonService;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,6 +26,7 @@ describe('PokemonListComponent', () => {
 
     fixture = TestBed.createComponent(PokemonListComponent);
     component = fixture.componentInstance;
+    router = TestBed.inject(Router);
     pokemonService = TestBed.inject(PokemonService);
   });
 
@@ -58,30 +60,22 @@ describe('PokemonListComponent', () => {
     expect(component.pokemons[0].name).toBe('ivysaur');
   });
 
-  it('should search for pokemons', () => {
-    const pokemon = { name: 'charizard', url: 'https://pokeapi.co/api/v2/pokemon/6/' };
-    jest.spyOn(pokemonService, 'getPokemon').mockReturnValue(of(pokemon));
+  it('should navigate to the correct URL when searchPokemons is called with a query', () => {
+    const navigateSpy = jest.spyOn(router, 'navigateByUrl');
 
-    component.searchQuery = 'charizard';
+    component.searchQuery = 'bulbasaur';
     component.searchPokemons();
-    fixture.detectChanges();
 
-    expect(component.pokemons.length).toBe(1);
-    expect(component.pokemons[0].name).toBe('charizard');
+    expect(navigateSpy).toHaveBeenCalledWith('/pokemon/bulbasaur');
   });
 
-  it('should clear search when search query is empty', () => {
-    const pokemons = {
-      results: [{ name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/' }]
-    };
-    jest.spyOn(pokemonService, 'getPokemons').mockReturnValue(of(pokemons));
+  it('should not navigate when searchQuery is empty', () => {
+    const navigateSpy = jest.spyOn(router, 'navigateByUrl');
 
     component.searchQuery = '';
     component.searchPokemons();
-    fixture.detectChanges();
 
-    expect(component.pokemons.length).toBeGreaterThan(0);
-    expect(component.pokemons[0].name).toBe('bulbasaur');
+    expect(navigateSpy).not.toHaveBeenCalled();
   });
 
   it('should render pokemon cards', () => {

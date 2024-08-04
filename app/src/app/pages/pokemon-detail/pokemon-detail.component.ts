@@ -15,13 +15,23 @@ export class PokemonDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private pokemonService: PokemonService
   ) { }
-
+  name: string = '';
+  showError: boolean = false;
   ngOnInit(): void {
     const name = this.route.snapshot.paramMap.get('name');
     if (name) {
-      this.pokemonService.getPokemon(name).subscribe((data: any) => {
-        this.pokemon = this.getData(data);
+      this.name = name
+      this.pokemonService.getPokemon(name).subscribe({
+        next: (data: any) => {
+          this.pokemon = this.getData(data);
+        },
+        error: (err) => {
+          console.error('Error fetching Pokemon data', err);
+          this.showError = true
+        }
       });
+    } else {
+      this.showError = true
     }
   }
 

@@ -22,4 +22,12 @@
             <app-pokemon-stat [title]="'Height'" [value]="pokemon.height+'ft'"></app-pokemon-stat>
         </div>
     </div>
+    <div class="pokemon-detail glass-card" *ngIf="showError">
+        <i class="material-icons not-found-icon">search_off</i>
+        <p class="font-three text-white">"{{name}}" not found!</p>
+        <a [routerLink]="['/']" class="not-found-link">
+            <i class="material-icons">arrow_back</i>&nbsp;&nbsp;
+            <span class="text-white">Back</span>
+        </a>
+    </div>
 </div>
