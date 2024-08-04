@@ -21,6 +21,8 @@ docker-compose up --build
     ```shell
     cd api/
     npm install
+    ```
+    ```shell
     cd ../app/
     npm install
     ```
