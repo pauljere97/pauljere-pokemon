@@ -8,14 +8,15 @@ application built in [Angular](https://angular.dev).
 * [Node.js v20](https://nodejs.org/en)
 
 ## Run in Docker environment
-1. Turn on your Docker daemon and ensure that it is running.
-2. Run the following command in the root directory of the project
+1. Clone the repository.
+2. Turn on your Docker daemon and ensure that it is running.
+3. Run the following command in the root directory of the project
 
 ```shell
 docker-compose up --build
 ```
 
-## Run locally (development)
+## Run locally (dev)
 1. Clone the repository.
 2. Install dependencies:
     ```shell
