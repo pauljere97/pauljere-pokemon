@@ -11,6 +11,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { PokemonDetailComponent } from "./pages/pokemon-detail/pokemon-detail.component";
 import { PokemonListComponent } from "./pages/pokemon-list/pokemon-list.component";
 import { PokemonCardComponent } from "./components/pokemon-card/pokemon-card.component";
+import { PokemonStatComponent } from "./components/pokemon-stat/pokemon-stat.component";
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { PokemonCardComponent } from "./components/pokemon-card/pokemon-card.com
     PokedexAppComponent,
     PokemonDetailComponent,
     PokemonListComponent,
-    PokemonCardComponent
+    PokemonCardComponent,
+    PokemonStatComponent,
   ],
   bootstrap: [PokedexAppComponent],
 })

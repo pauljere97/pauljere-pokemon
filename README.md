@@ -9,7 +9,7 @@ application built in [Angular](https://angular.dev).
 
 ## Run in Docker environment
 1. Turn on your Docker daemon and ensure that it is running.
-2. Run the follwoing command in the root directory of the project
+2. Run the following command in the root directory of the project
 
 ```shell
 docker-compose up --build
@@ -25,7 +25,7 @@ docker-compose up --build
     npm install
     ```
 
-In two separate shells, start the API and app:
+3. In two separate shells, start the Api and App:
 ```shell
 cd api/
 npm run start
@@ -41,5 +41,11 @@ npm run start
 ## Run Nest JS test (server side) with Jest
 ```shell
 cd api/
+npm run test
+```
+
+## Run Angular test (client side) with Jest
+```shell
+cd app/
 npm run test
 ```

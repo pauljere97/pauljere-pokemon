@@ -84,25 +84,4 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
-    .pokemon-stat {
-        border: 1px solid white;
-        text-align: center;
-        width: 100px;
-        margin: 5px;
-        border-radius: 10px;
-        overflow: hidden;
-
-        .stat-title {
-            background-color: white;
-            margin-bottom: 0;
-            color: #333;
-        }
-
-        .stat-desc {
-            font-weight: 500;
-            margin-bottom: 0;
-            color: white;
-        }
-    }
 }

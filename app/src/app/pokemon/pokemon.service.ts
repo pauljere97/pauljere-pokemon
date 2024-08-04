@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class PokemonService {
-    private readonly apiUrl = 'http://localhost:3000/api/pokemon';
+    public readonly apiUrl = 'http://localhost:3000/api/pokemon';
 
     constructor(private http: HttpClient) { }
 

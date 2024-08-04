@@ -12,6 +12,7 @@
         <app-pokemon-card *ngFor="let pokemon of pokemons" [pokemon]="pokemon"></app-pokemon-card>
     </div>
     <div class="pokemon-loadmore">
-        <button mat-raised-button (click)="loadMore()">Load More</button>
+        <button mat-raised-button (click)="loadMore()" *ngIf="pokemons.length > 1">Load More</button>
+        <button mat-raised-button (click)="loadMore()" *ngIf="pokemons.length < 2">Clear</button>
     </div>
 </div>

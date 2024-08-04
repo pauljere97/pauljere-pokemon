@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PokemonListModel } from '../../models/models';
 
 @Component({
   selector: 'app-pokemon-card',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './pokemon-card.component.scss'
 })
 export class PokemonCardComponent {
-  @Input() pokemon: any;
+  @Input() pokemon: PokemonListModel | undefined;
 }

@@ -43,12 +43,14 @@ export class PokemonListComponent implements OnInit {
   }
 
   loadMore(): void {
+    this.searchQuery = ''
     this.offset += this.limit;
     this.loadPokemons();
   }
 
   searchPokemons(): void {
     if (this.searchQuery) {
+      this.pokemons = []
       this.pokemonService.getPokemon(this.searchQuery.toLowerCase()).subscribe((data: any) => {
         this.pokemons = [this.getData(data)];
       });

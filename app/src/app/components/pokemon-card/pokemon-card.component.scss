@@ -3,10 +3,10 @@
     padding: 10px;
     border-radius: 10px;
     transition: 0.2s;
-    cursor: pointer;
     color: var(--white);
 
     .pokemon-image {
+        cursor: pointer;
         width: 140px;
         height: 140px;
         object-fit: contain;
@@ -16,4 +16,8 @@
 
 .pokemon-card:hover {
     transform: scale(1.2);
+
+    .pokemon-image {
+        background-color: var(--glass-bg2);
+    }
 }
