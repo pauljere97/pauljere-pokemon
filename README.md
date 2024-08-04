@@ -32,13 +32,29 @@ docker-compose up --build
     `Frontend URL: http://localhost:4200`
 
 ## Run Nest JS tests (server side) with Jest
-```shell
-cd api/
-npm run test
-```
+1. Navigate to app directory
+    ```shell
+    cd api/
+    ```
+2. Install dependencies
+    ```shell
+    npm install
+    ```
+3. Run Tests
+    ```shell
+    npm run test
+    ```
 
 ## Run Angular tests (client side) with Jest
-```shell
-cd app/
-npm run test
-```
+1. Navigate to app directory
+    ```shell
+    cd app/
+    ```
+2. Install dependencies
+    ```shell
+    npm install
+    ```
+3. Run Tests
+    ```shell
+    npm run test
+    ```
