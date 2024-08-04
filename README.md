@@ -26,25 +26,25 @@ docker-compose up --build
     ```
 
 3. In two separate shells, start the Api and App:
-```shell
-cd api/
-npm run start
-```
-`URL: http://localhost:3000`
-```shell
-cd app/
-npm run start
-```
-`URL: http://localhost:4200`
+    ```shell
+    cd api/
+    npm run start
+    ```
+    `URL: http://localhost:3000`
+    ```shell
+    cd app/
+    npm run start
+    ```
+    `URL: http://localhost:4200`
 
 
-## Run Nest JS test (server side) with Jest
+## Run Nest JS tests (server side) with Jest
 ```shell
 cd api/
 npm run test
 ```
 
-## Run Angular test (client side) with Jest
+## Run Angular tests (client side) with Jest
 ```shell
 cd app/
 npm run test
