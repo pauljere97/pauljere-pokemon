@@ -1,0 +1,15 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "scripts": {
+    "install:api": "cd api && npm install",
+    "install:app": "cd app && npm install",
+    "install:all": "concurrently \"npm run install:api\" \"npm run install:app\"",
+    "start:api": "cd api && npm start",
+    "start:app": "cd app && npm start",
+    "start:all": "concurrently \"npm run start:api\" \"npm run start:app\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

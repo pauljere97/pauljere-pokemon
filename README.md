@@ -19,28 +19,17 @@ docker-compose up --build
 
 ## Run locally (dev)
 1. Clone the repository.
-2. Install dependencies:
+2. Install Client and Server dependencies:
     ```shell
-    cd api/
-    npm install
-    ```
-    ```shell
-    cd ../app/
-    npm install
+    npm run install:all
     ```
 
-3. In two separate shells, start the Api and App:
+3. Start the Client and Server:
     ```shell
-    cd api/
-    npm run start
+    npm run start:all
     ```
-    `URL: http://localhost:3000`
-    ```shell
-    cd app/
-    npm run start
-    ```
-    `URL: http://localhost:4200`
-
+    `Server URL: http://localhost:3000`
+    `Frontend URL: http://localhost:4200`
 
 ## Run Nest JS tests (server side) with Jest
 ```shell
