@@ -20,7 +20,7 @@ import { PokemonStatComponent } from "./components/pokemon-stat/pokemon-stat.com
     CommonModule,
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
   ],
   providers: [
     PokemonService,
