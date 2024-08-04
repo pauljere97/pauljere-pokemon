@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../pokemon/pokemon.service';
 import { PokemonListModel } from '../../models/models';
-import { catchError, map, of } from 'rxjs';
 import { Router } from '@angular/router';
 
 const pokemonImageLink = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
@@ -16,7 +15,7 @@ const pokemonImageLink = 'https://raw.githubusercontent.com/PokeAPI/sprites/mast
 export class PokemonListComponent implements OnInit {
   pokemons: PokemonListModel[] = [];
   offset: number = 0;
-  limit: number = 20;
+  limit: number = 30;
   searchQuery: string = '';
 
   constructor(
@@ -39,12 +38,8 @@ export class PokemonListComponent implements OnInit {
     let id = pokemon.id
     if (!id) id = pokemon.url.split('/')[6]
     const hashID = id.toString().padStart(4, '0')
-    const image = this.getPokemonImage(id)
+    const image = `${pokemonImageLink}/${id}.png`
     return { id, image, hashID, name: pokemon.name };
-  }
-
-  getPokemonImage(id: string) {
-    return `${pokemonImageLink}/${id}.png`
   }
 
   loadMore(): void {

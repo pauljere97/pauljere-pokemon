@@ -24,8 +24,7 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemonService.getPokemon(name).subscribe({
         next: (data: any) => {
           this.pokemon = this.getData(data);
-        },
-        error: (err) => {
+        }, error: (err) => {
           console.error('Error fetching Pokemon data', err);
           this.showError = true
         }

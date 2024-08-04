@@ -3,7 +3,7 @@ import { HttpModule, HttpService } from '@nestjs/axios';
 import { of, throwError } from 'rxjs';
 import { AxiosResponse } from 'axios';
 import { PokemonService } from './pokemon.service';
-import { NotFoundException } from '@nestjs/common';
+import { HttpException, HttpStatus } from '@nestjs/common';
 
 describe('PokemonService', () => {
     let service: PokemonService;
@@ -66,7 +66,25 @@ describe('PokemonService', () => {
         service.getPokemon('invalid').subscribe({
             next: () => done.fail('Expected an error, but got a success response'),
             error: error => {
-                expect(error).toBeInstanceOf(NotFoundException);
+                expect(error).toBeInstanceOf(HttpException);
+                expect(error.getStatus()).toBe(HttpStatus.NOT_FOUND);
+                expect(error.message).toBe('Error fetching Pokemon');
+                done();
+            },
+        });
+    });
+
+    it('should throw a HttpException for other errors', done => {
+        jest.spyOn(httpService, 'get').mockImplementationOnce(() =>
+            throwError({ response: { status: 500, statusText: 'Internal Server Error' } })
+        );
+
+        service.getPokemon('bulbasaur').subscribe({
+            next: () => done.fail('Expected an error, but got a success response'),
+            error: error => {
+                expect(error).toBeInstanceOf(HttpException);
+                expect(error.getStatus()).toBe(HttpStatus.INTERNAL_SERVER_ERROR);
+                expect(error.message).toBe('Error fetching Pokemon');
                 done();
             },
         });
