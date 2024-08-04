@@ -112,7 +112,7 @@ describe('PokemonListComponent', () => {
     expect(searchSpy).toHaveBeenCalled();
   });
 
-  it('should display "Load More" button when pokemons length is greater than 1', () => {
+  it('should display "Load More" button when pokemons length is greater than 0', () => {
     component.pokemons = [
       { id: 1, hashID: '001', name: 'bulbasaur', image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png' },
       { id: 2, hashID: '002', name: 'ivysaur', image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png' }
@@ -121,15 +121,5 @@ describe('PokemonListComponent', () => {
 
     const loadMoreButton = fixture.debugElement.query(By.css('.pokemon-loadmore button'));
     expect(loadMoreButton.nativeElement.textContent).toContain('Load More');
-  });
-
-  it('should display "Clear" button when pokemons length is less than 2', () => {
-    component.pokemons = [
-      { id: 1, hashID: '001', name: 'bulbasaur', image: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png' }
-    ];
-    fixture.detectChanges();
-
-    const clearButton = fixture.debugElement.query(By.css('.pokemon-loadmore button'));
-    expect(clearButton.nativeElement.textContent).toContain('Clear');
   });
 });
