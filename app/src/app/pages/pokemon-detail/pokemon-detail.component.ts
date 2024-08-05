@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../../pokemon/pokemon.service';
 import { PokemonModel } from '../../models/models';
+import { UnsubscribeObservablesComponent } from '../../components/unsubscribe-observables/unsubscribe-observables.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -9,25 +11,29 @@ import { PokemonModel } from '../../models/models';
   styleUrl: './pokemon-detail.component.scss'
 })
 
-export class PokemonDetailComponent implements OnInit {
+export class PokemonDetailComponent extends UnsubscribeObservablesComponent implements OnInit, OnDestroy {
   pokemon: PokemonModel | undefined;
   constructor(
     private route: ActivatedRoute,
     private pokemonService: PokemonService
-  ) { }
+  ) {
+    super();
+  }
+
   name: string = '';
   showError: boolean = false;
   ngOnInit(): void {
     const name = this.route.snapshot.paramMap.get('name');
     if (name) {
       this.name = name
-      this.pokemonService.getPokemon(name).subscribe({
+      const subscription: Subscription = this.pokemonService.getPokemon(name).subscribe({
         next: (data: any) => {
           this.pokemon = this.getData(data);
         }, error: (err) => {
           this.showError = true
         }
       });
+      this.subscriptions.push(subscription);
     } else {
       this.showError = true
     }

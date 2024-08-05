@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PokemonService } from '../../pokemon/pokemon.service';
 import { PokemonListModel } from '../../models/models';
 import { Router } from '@angular/router';
+import { UnsubscribeObservablesComponent } from '../../components/unsubscribe-observables/unsubscribe-observables.component';
 
 const pokemonImageLink = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
 
@@ -12,7 +13,7 @@ const pokemonImageLink = 'https://raw.githubusercontent.com/PokeAPI/sprites/mast
 })
 
 
-export class PokemonListComponent implements OnInit {
+export class PokemonListComponent extends UnsubscribeObservablesComponent implements OnInit, OnDestroy {
   pokemons: PokemonListModel[] = [];
   offset: number = 0;
   limit: number = 30;
@@ -21,17 +22,20 @@ export class PokemonListComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private router: Router
-  ) { }
+  ) {
+    super()
+  }
 
   ngOnInit(): void {
     this.loadPokemons();
   }
 
   loadPokemons(): void {
-    this.pokemonService.getPokemons(this.offset, this.limit)
+    const subscription = this.pokemonService.getPokemons(this.offset, this.limit)
       .subscribe((data: any) => {
         this.pokemons = this.pokemons.concat(data.results).map(pokemon => this.getData(pokemon));
       });
+    this.subscriptions.push(subscription);
   }
 
   getData(pokemon: any): PokemonListModel {
