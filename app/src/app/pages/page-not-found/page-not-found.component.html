@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="top-bar">
+        <a [routerLink]="['/']">
+            <i class="material-icons">west</i>
+        </a>
+    </div>
+    <div class="pokemon-detail glass-card">
+        <i class="material-icons not-found-icon">public_off</i>
+        <p class="font-three text-white">"{{path}}"</p>
+        <p class="font-three text-white">Page Not Found</p>
+        <a [routerLink]="['/']" class="not-found-link">
+            <i class="material-icons">arrow_back</i>&nbsp;&nbsp;
+            <span class="text-white">Home</span>
+        </a>
+    </div>
+</div>

@@ -12,6 +12,7 @@ import { PokemonDetailComponent } from "./pages/pokemon-detail/pokemon-detail.co
 import { PokemonListComponent } from "./pages/pokemon-list/pokemon-list.component";
 import { PokemonCardComponent } from "./components/pokemon-card/pokemon-card.component";
 import { PokemonStatComponent } from "./components/pokemon-stat/pokemon-stat.component";
+import { PageNotFoundComponent } from "./pages/page-not-found/page-not-found.component";
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { PokemonStatComponent } from "./components/pokemon-stat/pokemon-stat.com
     PokemonListComponent,
     PokemonCardComponent,
     PokemonStatComponent,
+    PageNotFoundComponent
   ],
   bootstrap: [PokedexAppComponent],
 })
